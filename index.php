@@ -10,12 +10,9 @@ include 'view/includes/header.php';
         switch ($_GET['pag']) {
             case "feirante":
                 include "view/cadFeirante.php";
-
                 break;
             case "listFeirante":
                 include "view/listFeirante.php";
-                
-                
                 break;
 
             case "fiscal":

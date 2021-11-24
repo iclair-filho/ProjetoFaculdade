@@ -1,186 +1,114 @@
--- MySQL dump 10.13  Distrib 8.0.27, for Win64 (x86_64)
+-- phpMyAdmin SQL Dump
+-- version 5.1.1
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1    Database: projeto_faculdade
--- ------------------------------------------------------
--- Server version	8.0.27
+-- Host: 127.0.0.1
+-- Tempo de geração: 25-Nov-2021 às 00:38
+-- Versão do servidor: 10.4.20-MariaDB
+-- versão do PHP: 7.4.22
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
-/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-/*!40103 SET TIME_ZONE='+00:00' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
-/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
-/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Table structure for table `cadastro_atividades`
+-- Banco de dados: `recfeira`
 --
 
-DROP TABLE IF EXISTS `cadastro_atividades`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cadastro_atividades` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(60) NOT NULL,
-  `descricao` longtext NOT NULL,
-  `valor` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `cadastro_atividades`
+-- Estrutura da tabela `atividade`
 --
 
-LOCK TABLES `cadastro_atividades` WRITE;
-/*!40000 ALTER TABLE `cadastro_atividades` DISABLE KEYS */;
-/*!40000 ALTER TABLE `cadastro_atividades` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `atividade` (
+  `codAtiv` int(11) NOT NULL,
+  `descricao` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `valor` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Table structure for table `credenciamento_feirantes`
+-- Extraindo dados da tabela `atividade`
 --
 
-DROP TABLE IF EXISTS `credenciamento_feirantes`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `credenciamento_feirantes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(60) NOT NULL,
-  `senha` longtext NOT NULL,
-  `rg` varchar(12) NOT NULL,
-  `cpf` varchar(18) NOT NULL,
-  `cep` varchar(10) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `uf` varchar(2) NOT NULL,
-  `telefone` varchar(18) NOT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `cadastro_atividade_id` int NOT NULL,
-  `pagamento` varchar(45) NOT NULL,
-  `status` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `cadastro_atividade_id` (`cadastro_atividade_id`),
-  CONSTRAINT `credenciamento_feirantes_ibfk_1` FOREIGN KEY (`cadastro_atividade_id`) REFERENCES `cadastro_atividades` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+INSERT INTO `atividade` (`codAtiv`, `descricao`, `valor`) VALUES
+(8, 'Plantas e hortaliças', 5.5),
+(13, 'Carnes', 15),
+(15, 'Frutas', 5.5),
+(16, 'Roupas e confecções', 5.5),
+(17, 'Temperos', 5.5),
+(18, 'Alimentação', 2);
+
+-- --------------------------------------------------------
 
 --
--- Dumping data for table `credenciamento_feirantes`
+-- Estrutura da tabela `feirante`
 --
 
-LOCK TABLES `credenciamento_feirantes` WRITE;
-/*!40000 ALTER TABLE `credenciamento_feirantes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `credenciamento_feirantes` ENABLE KEYS */;
-UNLOCK TABLES;
+CREATE TABLE `feirante` (
+  `codFeirante` int(11) NOT NULL,
+  `cpf` int(11) NOT NULL,
+  `nome` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `rg` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `tel1` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `tel2` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `cep` int(11) NOT NULL,
+  `rua` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+  `numero` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
+  `bairro` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `cidade` varchar(20) COLLATE utf8_unicode_ci NOT NULL,
+  `uf` char(2) COLLATE utf8_unicode_ci NOT NULL,
+  `complemento` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Table structure for table `fiscal`
+-- Extraindo dados da tabela `feirante`
 --
 
-DROP TABLE IF EXISTS `fiscal`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `fiscal` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(60) NOT NULL,
-  `rg` varchar(12) NOT NULL,
-  `cpf` varchar(18) NOT NULL,
-  `cep` varchar(10) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `uf` varchar(2) NOT NULL,
-  `telefone` varchar(18) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
+INSERT INTO `feirante` (`codFeirante`, `cpf`, `nome`, `rg`, `tel1`, `tel2`, `email`, `cep`, `rua`, `numero`, `bairro`, `cidade`, `uf`, `complemento`) VALUES
+(5, 2147483647, 'Aldenize Morais Silva Viana', '654987', '81819181321', '', 'alenize@gmail.com', 55021265, 'Avenida Gonçalo Nunes de Olive', '84', 'Cidade Jardim', 'Caruaru', 'PE', 'Casa'),
+(11, 2147483647, 'José Iclair Viana Silva Filho', '6896793', '81981911500', '', 'iclair1@hotmail.com', 55021265, 'Rua Gon', '84', 'Cidade Jardim', 'Caruaru', 'PE', 'Casa');
 
 --
--- Dumping data for table `fiscal`
---
-
-LOCK TABLES `fiscal` WRITE;
-/*!40000 ALTER TABLE `fiscal` DISABLE KEYS */;
-/*!40000 ALTER TABLE `fiscal` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `setores_feira`
---
-
-DROP TABLE IF EXISTS `setores_feira`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `setores_feira` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `distrito` varchar(45) DEFAULT NULL,
-  `quadras` varchar(45) DEFAULT NULL,
-  `lotes` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `setores_feira`
---
-
-LOCK TABLES `setores_feira` WRITE;
-/*!40000 ALTER TABLE `setores_feira` DISABLE KEYS */;
-/*!40000 ALTER TABLE `setores_feira` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `usuarios`
---
-
-DROP TABLE IF EXISTS `usuarios`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuarios` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(60) NOT NULL,
-  `rg` varchar(12) NOT NULL,
-  `cpf` varchar(18) NOT NULL,
-  `cep` varchar(10) NOT NULL,
-  `rua` varchar(45) NOT NULL,
-  `bairro` varchar(45) NOT NULL,
-  `cidade` varchar(45) NOT NULL,
-  `uf` varchar(2) NOT NULL,
-  `email` varchar(45) DEFAULT NULL,
-  `nivel` varchar(13) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `usuarios`
---
-
-LOCK TABLES `usuarios` WRITE;
-/*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-/*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Dumping events for database 'projeto_faculdade'
+-- Índices para tabelas despejadas
 --
 
 --
--- Dumping routines for database 'projeto_faculdade'
+-- Índices para tabela `atividade`
 --
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+ALTER TABLE `atividade`
+  ADD PRIMARY KEY (`codAtiv`);
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+--
+-- Índices para tabela `feirante`
+--
+ALTER TABLE `feirante`
+  ADD PRIMARY KEY (`codFeirante`);
+
+--
+-- AUTO_INCREMENT de tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `atividade`
+--
+ALTER TABLE `atividade`
+  MODIFY `codAtiv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de tabela `feirante`
+--
+ALTER TABLE `feirante`
+  MODIFY `codFeirante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
--- Dump completed on 2021-11-02 16:21:55

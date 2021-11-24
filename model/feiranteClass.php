@@ -10,6 +10,7 @@ class Feirante extends Logradouro{
     private $tel1;
     private $tel2;
     private $email;
+    private $status;
 
 	
        
@@ -65,6 +66,12 @@ class Feirante extends Logradouro{
     }
     public function setEmail($email){
         $this->email = $email;
+    }
+    public function getStatus(){
+        return $this->status;
+    }
+    public function setStatus($status){
+        $this->status = $status;
     }
 }
 ?>
