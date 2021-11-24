@@ -1,0 +1,20 @@
+div.container{
+    margin-top: 5%;
+    margin-left: 23%;
+    margin-right: 23%;
+    width: 55%;
+}
+
+div.container-info{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+div.form-text.dois{
+    margin-left: 15px;
+}
+
+button.btn.btn-success{
+    margin-left: 250px;
+    width: 250px;
+}

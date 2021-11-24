@@ -1,0 +1,67 @@
+body{
+	margin: 0 auto;
+	background-color: rgb(255, 241, 255);
+	font-family: Calibri;
+	position: fixed;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.tela{
+
+}
+.divimagem{
+	float: left;
+	width: 60% ;
+	height: 100vh ;
+	background-image: url(img/feiralivre2.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.divdireita{
+height: 100vh;
+background-color:;
+width: 40%;
+float: right;
+
+
+}
+.form-group{
+
+}
+
+form{
+
+}
+#campoemail{
+	width: 400px;
+	margin-top: 10%;
+	
+
+}
+#camposenha{
+	width: 400px;
+	margin-top: 10%;
+
+}
+#botao{
+	width: 400px;
+	margin-top: 10%;
+	font-weight: bold;
+}
+.botaoacessopublico{
+	width: 400px;
+	margin-top: ;
+	font-weight: bold;
+}
+.acessopublico{
+	text-align: center;
+	margin-top:100px;
+}
+.centro{
+ margin-left: 75px;
+
+}
