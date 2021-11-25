@@ -31,6 +31,10 @@
             <span class="tooltip">Atividades</span>
         </li>
         <li>
+            <a href="?pag=financeiro"><i class='bx bx-dollar-circle'></i><span class="links_name">Financeiro</span></a>
+            <span class="tooltip">Financeiro</span>
+        </li>
+        <li>
             <a href="?pag=modelo"><i class='bx bxs-grid'></i><span class="links_name">Modelo</span></a>
             <span class="tooltip">Modelo</span>
         </li>

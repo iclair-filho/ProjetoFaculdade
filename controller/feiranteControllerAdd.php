@@ -21,6 +21,7 @@
     $feirante->setCidade($_POST['cidade']);
     $feirante->setUF($_POST['uf']);
     $feirante->setComplemento($_POST['complemento']);
+    $feirante->setStatus($_POST['status']);
 
 
 

@@ -34,7 +34,7 @@ class Feirante extends Logradouro{
     }
 
     public function setCPF($cpf){
-        $this->cpf = $cpf;
+        $this->cpf = $cpf;  
     }
     public function getNome(){
         return $this->nome;

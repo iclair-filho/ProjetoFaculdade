@@ -32,6 +32,30 @@
                                     <input type="password" class="form-control form-control-sm" name="confirmasenha" placeholder="Confirmar Senha">
                                 </div>
                             </div>
+                            <div class="col-sm-4 mb-sm-0">
+                                <div class="sm-2">
+                                    <label for="">Status de Analise:</label>
+                                    <select class="form-select form-select-sm" aria-label=".form-select-sm" name="status">
+
+                                    <?php
+                                        if ($linha->status==1) {
+                                            echo '<option selected>Em Analise</option>';
+                                        } elseif($linha->status==2) {
+                                            echo '<option selected>Liberado</option>';
+                                        }elseif($linha->status==3){
+                                            echo '<option selected>Reprovado</option>';
+                                        }
+                                        
+                                    ?>
+
+                                        
+                                        <option value="1">Em Analise</option>
+                                        <option value="2">Liberado</option>
+                                        <option value="3">Reprovado</option>
+                                    </select>
+
+                                </div>
+                            </div>
                             <div class="col-sm-12">
                                 <hr>
                             </div>

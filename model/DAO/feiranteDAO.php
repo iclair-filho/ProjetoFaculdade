@@ -17,7 +17,7 @@ class FeiranteDAO
 
     public function Create(Feirante $feirante)
     {
-        $sql = 'INSERT INTO feirante (cpf, nome, rg, tel1, tel2, email, cep, rua, numero, bairro, cidade, uf, complemento) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO feirante (cpf, nome, rg, tel1, tel2, email, cep, rua, numero, bairro, cidade, uf, complemento, status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,1)';
         $insere = Conexao::getConn()->prepare($sql);
         $insere->bindValue(1, $feirante->getCPF());
         $insere->bindValue(2, $feirante->getNome());
@@ -32,6 +32,8 @@ class FeiranteDAO
         $insere->bindValue(11, $feirante->getCidade());
         $insere->bindValue(12, $feirante->getUF());
         $insere->bindValue(13, $feirante->getComplemento());
+        
+
 
         $insere->execute();
 
@@ -51,7 +53,7 @@ class FeiranteDAO
 
     public function Update(Feirante $feirante)
     {
-        $sql = 'UPDATE feirante SET cpf=?, nome=?, rg=?, tel1=?, tel2=?, email=?, cep=?, rua=?, numero=?, bairro=?, cidade=?, uf=?, complemento=? WHERE codFeirante=?';
+        $sql = 'UPDATE feirante SET cpf=?, nome=?, rg=?, tel1=?, tel2=?, email=?, cep=?, rua=?, numero=?, bairro=?, cidade=?, uf=?, complemento=?, status=? WHERE codFeirante=?';
         $update = Conexao::getConn()->prepare($sql);
         $update->bindValue(1, $feirante->getCPF());
         $update->bindValue(2, $feirante->getNome());
@@ -66,7 +68,8 @@ class FeiranteDAO
         $update->bindValue(11, $feirante->getCidade());
         $update->bindValue(12, $feirante->getUF());
         $update->bindValue(13, $feirante->getComplemento());
-        $update->bindValue(14, $feirante->getCodigo());
+        $update->bindValue(14, $feirante->getStatus());
+        $update->bindValue(15, $feirante->getCodigo());
         $update->execute();
         
 

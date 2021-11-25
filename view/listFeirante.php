@@ -45,7 +45,15 @@
 
                                     echo "<td class='col-5'>$linha->nome</td>";
                                     echo "<td class='col-2'>$linha->cidade</td>";
-                                    echo "<td class='col-2'><span class='badge bg-warning text-dark'>Em Análise</span></td>";
+
+                                    if($linha->status==1){
+                                        echo "<td class='col-2'><span class='badge bg-warning text-dark'>Em Análise</span></td>";
+                                    }elseif($linha->status==2){
+                                        echo "<td class='col-2'><span class='badge bg-success text-light'>Liberado</span></td>";
+                                    }elseif($linha->status==3){
+                                        echo "<td class='col-2'><span class='badge bg-danger text-light'>Repprovado</span></td>";
+                                    };
+                                    
 
                                     echo "<td class='col-2'>";
                                     echo "<a class='btn btn-outline-info btn-sm me-1' href='#edit_$linha->codFeirante' data-toggle='modal'><i class='bx bx-edit-alt'></i></a>";

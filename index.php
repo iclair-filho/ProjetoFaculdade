@@ -24,6 +24,9 @@ include 'view/includes/header.php';
             case "atividade":
                 include "view/cadAtividades.php";
                 break;
+            case "financeiro":
+                include "view/cadFinanceiro.php";
+                break;
             case "modelo":
                 include "view/cadModelo.php";
                 break;
