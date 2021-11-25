@@ -58,7 +58,7 @@
                                     echo "<td class='col-2'>";
                                     echo "<a class='btn btn-outline-info btn-sm me-1' href='#edit_$linha->codFeirante' data-toggle='modal'><i class='bx bx-edit-alt'></i></a>";
                                     echo "<a class='btn btn-outline-danger btn-sm me-1' href='#del_$linha->codFeirante' data-toggle='modal'><i class='bx bx-trash-alt'></i></a>";
-                                    echo "<a class='btn btn-outline-info btn-sm me-1' href='gerarpdf.php?id=$linha->codFeirante' data-toggle='modal'><i class='bx bx-printer'></i></a>";
+                                    echo "<a class='btn btn-outline-info btn-sm me-1' href='view/gerarpdf.php?id=$linha->codFeirante'><i class='bx bx-printer'></i></a>";
                                     
 
                                     
